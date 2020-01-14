@@ -46,20 +46,38 @@ namespace Wizard
 
         private static void Back_Callback()
         {
-            PageStack.Pop();
-            Container.Page = PageStack.Peek();
+            if (PageStack.Count == 0) return;
+            var page = PageStack.Pop();         // Remove current page.
+            HidePage(page);                     // Hide current page.
+        }
+
+        private static void HidePage(UserControl page)
+        {
+            var vm = page.DataContext as Page;  // Get view model of current page.
+            vm.Closing();                       // Page is closing when no longer displayed.
+            var previous = PageStack.Peek();    // Previous page.
+            ShowPage(PageStack.Peek());         // Show previous page.
         }
 
         private static void Next_Callback()
         {
-            var vm = Container.Page.DataContext as Page;
+            var vm = Container.Page.DataContext as Page;    // Current displayed page.
 
             // Check if "next page" happens to be a non existing page.
             // Then prevent from displaying the next page.
             if (vm.Next is Views.Pages.NoPage) return;
-            
-            PageStack.Push(vm.Next);
-            Container.Page = vm.Next;
+
+            vm.Closing();           // Close current displayed page.
+            var next = vm.Next;     // Get next page.
+            PageStack.Push(next);   // Store next page.
+            ShowPage(next);         // Show next page.
+        }
+
+        private static void ShowPage(UserControl page)
+        {
+            var vm = page.DataContext as Page;  // Get view model of next page.
+            vm.Opening();                       // Page is opeinging before it's displayed.
+            Container.Page = page;              // Show next page.
         }
 
         private static void Exit_Callback()
@@ -73,6 +91,7 @@ namespace Wizard
             foreach (var page in PageStack)
             {
                 var vm = page.DataContext as Page;
+                vm.Closing();
                 vm.Dispose();
             }
         }

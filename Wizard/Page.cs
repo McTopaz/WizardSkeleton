@@ -14,6 +14,20 @@ namespace Wizard
             Next = new Views.Pages.NoPage();    // Set "no page" as default. The property is changed if there is an actual next page.
         }
 
+        /// <summary>
+        /// Occurs before the page is displayed.
+        /// </summary>
+        public virtual void Opening()
+        {
+        }
+
+        /// <summary>
+        /// Occurs after the page is no longer displayed.
+        /// </summary>
+        public virtual void Closing()
+        {
+        }
+
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
 
