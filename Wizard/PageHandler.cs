@@ -11,7 +11,6 @@ namespace Wizard
 {
     static class PageHandler
     {
-        static List<Page> Pages { get; set; } = new List<Page>();
         static Stack<UserControl> PageStack { get; set; } = new Stack<UserControl>();
         static vmMainWindow Container { get; set; }
 
@@ -26,6 +25,23 @@ namespace Wizard
             back.Callback += Back_Callback;
             next.Callback += Next_Callback;
             exit.Callback += Exit_Callback;
+
+            back.Enable = _ => EnableBack();
+            next.Enable = _ => EnableNext();
+        }
+
+        private static bool EnableBack()
+        {
+            return PageStack.Count > 1;
+        }
+
+        private static bool EnableNext()
+        {
+            if (PageStack.Count == 0 || Container == null) return false;
+            var vm = Container.Page.DataContext as Page;
+            if (vm == null) return false;
+            var isNoPage = vm.Next is Views.Pages.NoPage;
+            return !isNoPage;
         }
 
         private static void Back_Callback()
@@ -54,9 +70,10 @@ namespace Wizard
 
         static void DisposePages()
         {
-            foreach (var page in Pages)
+            foreach (var page in PageStack)
             {
-                page.Dispose();
+                var vm = page.DataContext as Page;
+                vm.Dispose();
             }
         }
     }
