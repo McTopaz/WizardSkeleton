@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 
 using Wizard.Misc;
+using Wizard.Views;
+using Wizard.Views.Pages;
 
 namespace Wizard.ViewModels
 {
@@ -21,17 +23,17 @@ namespace Wizard.ViewModels
 
         private void Search_Callback()
         {
-            Console.WriteLine("");
+            Next = new Search();
         }
 
         private void Config_Callback()
         {
-            Console.WriteLine("");
+            Next = new Config();
         }
 
         private void Run_Callback()
         {
-            Console.WriteLine("");
+            Next = new Run();
         }
     }
 }

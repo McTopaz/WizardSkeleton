@@ -7,10 +7,7 @@ using PropertyChanged;
 namespace Wizard.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
-    class vmSearch : Page
+    class vmConfig
     {
-        public vmSearch()
-        {
-        }
     }
 }
