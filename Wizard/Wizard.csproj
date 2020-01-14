@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Company>TheCompany</Company>
+    <ApplicationIcon>Logo.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Back.png" />
+    <None Remove="Images\Exit.png" />
+    <None Remove="Images\Globe.png" />
+    <None Remove="Images\Logo.png" />
+    <None Remove="Images\Next.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PropertyChanged.Fody" Version="3.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Back.png" />
+    <Resource Include="Images\Exit.png" />
+    <Resource Include="Images\Globe.png" />
+    <Resource Include="Images\Logo.png" />
+    <Resource Include="Images\Next.png" />
+  </ItemGroup>
+
+</Project>
