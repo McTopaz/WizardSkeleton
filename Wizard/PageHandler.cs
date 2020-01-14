@@ -37,6 +37,11 @@ namespace Wizard
         private static void Next_Callback()
         {
             var vm = Container.Page.DataContext as Page;
+
+            // Check if "next page" happens to be a non existing page.
+            // Then prevent from displaying the next page.
+            if (vm.Next is Views.Pages.NoPage) return;
+            
             PageStack.Push(vm.Next);
             Container.Page = vm.Next;
         }

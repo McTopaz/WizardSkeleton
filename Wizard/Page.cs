@@ -9,6 +9,11 @@ namespace Wizard
     {
         public UserControl Next { get; set; }
 
+        public Page()
+        {
+            Next = new Views.Pages.NoPage();    // Set "no page" as default. The property is changed if there is an actual next page.
+        }
+
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
 
