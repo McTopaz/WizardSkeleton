@@ -7,7 +7,7 @@ using PropertyChanged;
 namespace Wizard.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
-    class vmConfig
+    class vmConfig : Page
     {
     }
 }
