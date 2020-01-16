@@ -16,7 +16,7 @@
     <Compile Update="Views\Pages\Config.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Pages\Main.xaml.cs">
+    <Compile Update="Views\Pages\MainMenu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\Pages\Run.xaml.cs">
@@ -42,7 +42,7 @@
     <Page Update="Views\Pages\Config.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Pages\Main.xaml">
+    <Page Update="Views\Pages\MainMenu.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Pages\Run.xaml">

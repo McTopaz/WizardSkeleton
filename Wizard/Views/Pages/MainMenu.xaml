@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Wizard.Views.Pages.Main"
+﻿<UserControl x:Class="Wizard.Views.Pages.MainMenu"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -10,9 +10,9 @@
              Background="LightGray">
 
     <UserControl.DataContext>
-        <vm:vmMain />
+        <vm:vmMainMenu />
     </UserControl.DataContext>
-    
+
     <StackPanel Orientation="Vertical" Margin="20">
 
         <RadioButton Content="Search" Command="{Binding Search}" Margin="6" />
@@ -20,5 +20,6 @@
         <RadioButton Content="Run" Command="{Binding Run}" Margin="6" />
 
     </StackPanel>
-    
+
 </UserControl>
+

@@ -8,17 +8,18 @@ using Wizard.Views.Pages;
 
 namespace Wizard.ViewModels
 {
-    class vmMain : Page
+    class vmMainMenu : Page
     {
         public RelayCommand Search { get; set; } = new RelayCommand();
         public RelayCommand Config { get; set; } = new RelayCommand();
         public RelayCommand Run { get; set; } = new RelayCommand();
 
-        public vmMain()
+        public vmMainMenu()
         {
             Search.Callback += Search_Callback;
             Config.Callback += Config_Callback;
             Run.Callback += Run_Callback;
+            Title.Text = "Main menu";
         }
 
         private void Search_Callback()

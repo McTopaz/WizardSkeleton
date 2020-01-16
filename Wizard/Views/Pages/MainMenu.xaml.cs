@@ -14,11 +14,11 @@ using System.Windows.Shapes;
 namespace Wizard.Views.Pages
 {
     /// <summary>
-    /// Interaction logic for Main.xaml
+    /// Interaction logic for MainMenu.xaml
     /// </summary>
-    public partial class Main : UserControl
+    public partial class MainMenu : UserControl
     {
-        public Main()
+        public MainMenu()
         {
             InitializeComponent();
         }
