@@ -5,7 +5,7 @@ using System.Windows.Media;
 
 namespace Wizard.Misc
 {
-    class ITitle
+    interface ITitle
     {
         string Text { get; set; }
         double Size { get; set; }
