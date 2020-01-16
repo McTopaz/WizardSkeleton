@@ -13,12 +13,17 @@ namespace Wizard
     {
         static Stack<UserControl> PageStack { get; set; } = new Stack<UserControl>();
         static vmMainWindow Container { get; set; }
-        public static ITitle Title { get; set; }
+        public static Title Title { get; set; }
 
-        public static void SetDisplayingPage(vmMainWindow mainWindow)
+        public static void PageContainer(vmMainWindow mainWindow)
         {
-            PageStack.Push(mainWindow.Page);
             Container = mainWindow;
+        }
+
+        public static void SetStartPage(UserControl page)
+        {
+            PageStack.Push(page);
+            ShowPage(page);
         }
 
         public static void SetNavigationCommands(RelayCommand back, RelayCommand next, RelayCommand exit)
@@ -78,7 +83,15 @@ namespace Wizard
         {
             var vm = page.DataContext as Page;  // Get view model of next page.
             vm.Opening();                       // Page is opeinging before it's displayed.
+            UpdateHeaderTitle(vm.Title);
             Container.Page = page;              // Show next page.
+        }
+
+        private static void UpdateHeaderTitle(Title title)
+        {
+            Title.Text = title.Text;
+            Title.Size = title.Size;
+            Title.Color = title.Color;
         }
 
         private static void ExitButton_Callback()

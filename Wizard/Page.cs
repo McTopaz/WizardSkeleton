@@ -11,12 +11,12 @@ namespace Wizard
     abstract class Page : IDisposable
     {
         public UserControl Next { get; set; }
-        public ITitle Title { get; private set; }
+        public Title Title { get; private set; }
 
         public Page()
         {
-            Next = new NoPage();        // Set "no page" as default. The property is changed if there is an actual next page.
-            Title = PageHandler.Title;  // Gain access to the header's title.
+            Next = new NoPage();    // Set "no page" as default. The property is changed if there is an actual next page.
+            Title = new Title();
         }
 
         /// <summary>

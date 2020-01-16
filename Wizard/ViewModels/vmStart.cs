@@ -15,7 +15,8 @@ namespace Wizard.ViewModels
         public vmStart()
         {
             Language.Callback += Language_Callback;
-            Next = new Views.Pages.Main();
+            Next = new Views.Pages.MainMenu();
+            Title.Text = "Start";
         }
 
         private void Language_Callback()

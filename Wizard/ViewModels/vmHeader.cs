@@ -9,16 +9,14 @@ using PropertyChanged;
 namespace Wizard.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
-    class vmHeader : ITitle
+    class vmHeader
     {
         public Brush Background { get; set; } = Brushes.CornflowerBlue;
-        public string Text { get; set; } = "Title";
-        public double Size { get; set; } = 20;
-        public Brush Color { get; set; } = Brushes.White;
+        public Title Title { get; private set; } = new Title();
 
         public vmHeader()
         {
-            PageHandler.Title = this;
+            PageHandler.Title = Title;
         }
     }
 }

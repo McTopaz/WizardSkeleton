@@ -14,8 +14,8 @@ namespace Wizard.ViewModels
 
         public vmMainWindow()
         {
-            Page = new Views.Pages.Start();
-            PageHandler.SetDisplayingPage(this);
+            PageHandler.PageContainer(this);
+            //PageHandler.SetStartPage(new Views.Pages.Start());
         }
     }
 }

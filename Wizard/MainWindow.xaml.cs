@@ -23,6 +23,11 @@ namespace Wizard
         public MainWindow()
         {
             InitializeComponent();
+
+            // Setting the first page ti be displayed.
+            // This must be done after the MainWindow have initialized.
+            // Or else the Header and Footer are not initialized.
+            PageHandler.SetStartPage(new Views.Pages.Start());
         }
     }
 }
