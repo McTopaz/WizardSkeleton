@@ -22,20 +22,20 @@ namespace Wizard
 
         public static void SetNavigationCommands(RelayCommand back, RelayCommand next, RelayCommand exit)
         {
-            back.Callback += Back_Callback;
-            next.Callback += Next_Callback;
-            exit.Callback += Exit_Callback;
+            back.Callback += BackButton_Callback;
+            next.Callback += NextButton_Callback;
+            exit.Callback += ExitButton_Callback;
 
-            back.Enable = _ => EnableBack();
-            next.Enable = _ => EnableNext();
+            back.Enable = _ => EnableBackButton();
+            next.Enable = _ => EnableNextButton();
         }
 
-        private static bool EnableBack()
+        private static bool EnableBackButton()
         {
             return PageStack.Count > 1;
         }
 
-        private static bool EnableNext()
+        private static bool EnableNextButton()
         {
             if (PageStack.Count == 0 || Container == null) return false;
             var vm = Container.Page.DataContext as Page;
@@ -44,7 +44,7 @@ namespace Wizard
             return !isNoPage;
         }
 
-        private static void Back_Callback()
+        private static void BackButton_Callback()
         {
             if (PageStack.Count == 0) return;
             var page = PageStack.Pop();         // Remove current page.
@@ -59,7 +59,7 @@ namespace Wizard
             ShowPage(PageStack.Peek());         // Show previous page.
         }
 
-        private static void Next_Callback()
+        private static void NextButton_Callback()
         {
             var vm = Container.Page.DataContext as Page;    // Current displayed page.
 
@@ -80,7 +80,7 @@ namespace Wizard
             Container.Page = page;              // Show next page.
         }
 
-        private static void Exit_Callback()
+        private static void ExitButton_Callback()
         {
             DisposePages();
             Environment.Exit(0);
