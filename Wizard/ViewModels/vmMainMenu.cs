@@ -34,7 +34,7 @@ namespace Wizard.ViewModels
 
         private void Run_Callback()
         {
-            Next = new Run();
+            Next = new Connect();
         }
     }
 }
