@@ -17,8 +17,8 @@
     <DockPanel LastChildFill="True">
         
         <!-- Title -->
-        <TextBlock DockPanel.Dock="Left" Foreground="{Binding TitleColor}" FontSize="{Binding TitleSize}" VerticalAlignment="Center" Margin="20,0,0,0">
-            <Run Text="{Binding Title}" />
+        <TextBlock DockPanel.Dock="Left" Foreground="{Binding Color}" FontSize="{Binding Size}" VerticalAlignment="Center" Margin="20,0,0,0">
+            <Run Text="{Binding Text}" />
         </TextBlock>
         
         <!-- Logo -->

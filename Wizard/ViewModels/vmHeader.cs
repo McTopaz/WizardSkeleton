@@ -3,16 +3,22 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Media;
 
+using Wizard.Misc;
 using PropertyChanged;
 
 namespace Wizard.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
-    class vmHeader
+    class vmHeader : ITitle
     {
         public Brush Background { get; set; } = Brushes.CornflowerBlue;
-        public string Title { get; set; } = "Title";
-        public double TitleSize { get; set; } = 20;
-        public Brush TitleColor { get; set; } = Brushes.White;
+        public string Text { get; set; } = "Title";
+        public double Size { get; set; } = 20;
+        public Brush Color { get; set; } = Brushes.White;
+
+        public vmHeader()
+        {
+            PageHandler.Title = this;
+        }
     }
 }

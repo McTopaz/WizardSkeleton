@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Controls;
 
+using Wizard.Misc;
+using Wizard.Views.Pages;
+
 namespace Wizard
 {
     abstract class Page : IDisposable
     {
         public UserControl Next { get; set; }
+        public ITitle Title { get; private set; }
 
         public Page()
         {
-            Next = new Views.Pages.NoPage();    // Set "no page" as default. The property is changed if there is an actual next page.
+            Next = new NoPage();        // Set "no page" as default. The property is changed if there is an actual next page.
+            Title = PageHandler.Title;  // Gain access to the header's title.
         }
 
         /// <summary>

@@ -13,6 +13,7 @@ namespace Wizard
     {
         static Stack<UserControl> PageStack { get; set; } = new Stack<UserControl>();
         static vmMainWindow Container { get; set; }
+        public static ITitle Title { get; set; }
 
         public static void SetDisplayingPage(vmMainWindow mainWindow)
         {
