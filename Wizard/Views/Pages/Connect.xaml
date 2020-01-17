@@ -30,6 +30,7 @@
                         <x:Type TypeName="misc:Protocols"/>
                     </ObjectDataProvider.MethodParameters>
                 </ObjectDataProvider>
+                <misc:TextToIpAddress x:Key="TextToIP" />
             </RadioButton.Resources>
             
             <RadioButton.Content>
@@ -53,7 +54,7 @@
 
                         <!-- IP-address -->
                         <Label Content="IP-address" Grid.Row="0" Grid.Column="0" />
-                        <TextBox Text="{Binding IpAddress}" IsEnabled="{Binding EnableFields.IpAddress}" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="1" />
+                        <TextBox Text="{Binding IpAddress, Converter={StaticResource TextToIP}}" IsEnabled="{Binding EnableFields.IpAddress}" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="1" />
                         
                         <!-- Port -->
                         <Label Content="Port" Grid.Row="2" Grid.Column="0" />
