@@ -37,10 +37,13 @@
 
                     <Label Content="Connect using network" />
 
-                    <Grid Margin="0,20,0,0">
+                    <Grid Margin="0,20,0,0" >
+
                         <Grid.RowDefinitions>
                             <RowDefinition />
+                            <RowDefinition Height="6" />    <!-- Row spacing -->
                             <RowDefinition />
+                            <RowDefinition Height="6" />    <!-- Row spacing -->
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
@@ -50,15 +53,15 @@
 
                         <!-- IP-address -->
                         <Label Content="IP-address" Grid.Row="0" Grid.Column="0" />
-                        <TextBox Text="{Binding IpAddress}" Grid.Row="0" Grid.Column="1" />
+                        <TextBox Text="{Binding IpAddress}" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="1" />
                         
                         <!-- Port -->
-                        <Label Content="Port" Grid.Row="1" Grid.Column="0" />
-                        <num:NumericUpDown Value="{Binding Port}" MinValue="0" MaxValue="65535" Grid.Row="1" Grid.Column="1" />
+                        <Label Content="Port" Grid.Row="2" Grid.Column="0" />
+                        <num:NumericUpDown Value="{Binding Port}" MinValue="0" MaxValue="65535" Grid.Row="2" Grid.Column="1" />
                         
                         <!-- Protocol -->
-                        <Label Content="Protocol" Grid.Row="2" Grid.Column="0" />
-                        <ComboBox ItemsSource="{Binding Source={StaticResource AllProtocols}}" SelectedItem="{Binding Protocol}" Grid.Row="2" Grid.Column="1" />
+                        <Label Content="Protocol" Grid.Row="4" Grid.Column="0" />
+                        <ComboBox ItemsSource="{Binding Source={StaticResource AllProtocols}}" SelectedItem="{Binding Protocol}" Grid.Row="4" Grid.Column="1" />
                     </Grid>
                     
                     
@@ -91,9 +94,13 @@
                     <Grid Margin="0,20,0,0">
                         <Grid.RowDefinitions>
                             <RowDefinition />
+                            <RowDefinition Height="6" />    <!-- Row spacing -->
                             <RowDefinition />
+                            <RowDefinition Height="6" />    <!-- Row spacing -->
                             <RowDefinition />
+                            <RowDefinition Height="6" />    <!-- Row spacing -->
                             <RowDefinition />
+                            <RowDefinition Height="6" />    <!-- Row spacing -->
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
@@ -106,20 +113,20 @@
                         <ComboBox ItemsSource="{Binding Comports}" Text="{Binding Comport}" Grid.Row="0" Grid.Column="1" />
 
                         <!-- Baudrate -->
-                        <Label Content="Baudrate" Grid.Row="1" Grid.Column="0" />
-                        <num:NumericUpDown Value="{Binding Baudrate}" MinValue="0" MaxValue="1000000" Grid.Row="1" Grid.Column="1" />
+                        <Label Content="Baudrate" Grid.Row="2" Grid.Column="0" />
+                        <num:NumericUpDown Value="{Binding Baudrate}" MinValue="0" MaxValue="1000000" Grid.Row="2" Grid.Column="1" />
 
                         <!-- Data bits -->
-                        <Label Content="Data bits" Grid.Row="2" Grid.Column="0" />
-                        <num:NumericUpDown Value="{Binding Databits}" MinValue="0" MaxValue="8" Grid.Row="2" Grid.Column="1" />
+                        <Label Content="Data bits" Grid.Row="4" Grid.Column="0" />
+                        <num:NumericUpDown Value="{Binding Databits}" MinValue="0" MaxValue="8" Grid.Row="4" Grid.Column="1" />
 
                         <!-- Parity -->
-                        <Label Content="Parity" Grid.Row="3" Grid.Column="0" />
-                        <ComboBox ItemsSource="{Binding Source={StaticResource AllParyties}}" SelectedItem="{Binding Parity}" Grid.Row="3" Grid.Column="1" />
+                        <Label Content="Parity" Grid.Row="6" Grid.Column="0" />
+                        <ComboBox ItemsSource="{Binding Source={StaticResource AllParyties}}" SelectedItem="{Binding Parity}" Grid.Row="6" Grid.Column="1" />
 
                         <!-- Stop bits -->
-                        <Label Content="Stop bits" Grid.Row="4" Grid.Column="0" />
-                        <ComboBox ItemsSource="{Binding Source={StaticResource AllStopBits}}" SelectedItem="{Binding StopBits}" Grid.Row="4" Grid.Column="1" />
+                        <Label Content="Stop bits" Grid.Row="8" Grid.Column="0" />
+                        <ComboBox ItemsSource="{Binding Source={StaticResource AllStopBits}}" SelectedItem="{Binding StopBits}" Grid.Row="8" Grid.Column="1" />
                     </Grid>
 
                 </StackPanel>
