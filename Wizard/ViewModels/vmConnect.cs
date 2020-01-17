@@ -4,6 +4,7 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 
+using Wizard.Views.Pages;
 using Wizard.Misc;
 
 using PropertyChanged;
@@ -11,7 +12,7 @@ using PropertyChanged;
 namespace Wizard.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
-    class vmConnect : Page
+    class vmConnect : vmPageBase
     {
         public bool UseNetwork { get; set; } = true;
         public EnableConnectFields EnableParameters { get; set; } = new EnableConnectFields(true);
@@ -33,7 +34,7 @@ namespace Wizard.ViewModels
         public vmConnect()
         {
             Title.Text = "Select communication method";
-            Next = new Views.Pages.Run();
+            Next = new Run();
         }
     }
 

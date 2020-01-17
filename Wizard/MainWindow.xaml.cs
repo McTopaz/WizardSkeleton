@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using Wizard.Views.Pages;
+
 namespace Wizard
 {
     /// <summary>
@@ -24,10 +26,11 @@ namespace Wizard
         {
             InitializeComponent();
 
-            // Setting the first page ti be displayed.
+            // Setting the first page to be displayed.
             // This must be done after the MainWindow have initialized.
             // Or else the Header and Footer are not initialized.
-            PageHandler.SetStartPage(new Views.Pages.Start());
+            var page = new Page(new Start());
+            PageHandler.SetStartPage(page);
         }
     }
 }

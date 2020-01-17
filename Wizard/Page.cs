@@ -8,27 +8,31 @@ using Wizard.Views.Pages;
 
 namespace Wizard
 {
-    abstract class Page : IDisposable
+    class Page : IPage, IDisposable
     {
-        public UserControl Next { get; set; }
+        public UserControl Content { get; set; }
+        public Page Next { get; set; }
         public Title Title { get; private set; }
+        public vmPageBase ViewModel { get; private set; }
 
-        public Page()
+        protected Page()
         {
-            Next = new NoPage();    // Set "no page" as default. The property is changed if there is an actual next page.
-            Title = new Title();
+            // This constructor overload is only for the NoPage derivied class.
         }
 
-        /// <summary>
-        /// Occurs before the page is displayed.
-        /// </summary>
+        public Page(UserControl content)
+        {
+            Content = content;
+            ViewModel = Content.DataContext as vmPageBase;
+            ViewModel.Container = this;
+            Title = ViewModel.Title;
+            Next = ViewModel.Next == null ? new NoPage() : new Page(ViewModel.Next);
+        }
+
         public virtual void Opening()
         {
         }
 
-        /// <summary>
-        /// Occurs after the page is no longer displayed.
-        /// </summary>
         public virtual void Closing()
         {
         }
@@ -68,5 +72,17 @@ namespace Wizard
             // GC.SuppressFinalize(this);
         }
         #endregion
+    }
+
+    class NoPage : Page
+    {
+        public NoPage()
+        {
+        }
+    }
+
+    interface IPage
+    {
+        Page Next { get; set; }
     }
 }

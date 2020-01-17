@@ -11,7 +11,7 @@ namespace Wizard
 {
     static class PageHandler
     {
-        static Stack<UserControl> PageStack { get; set; } = new Stack<UserControl>();
+        static Stack<Page> PageStack { get; set; } = new Stack<Page>();
         static vmMainWindow Container { get; set; }
         public static Title Title { get; set; }
 
@@ -20,7 +20,7 @@ namespace Wizard
             Container = mainWindow;
         }
 
-        public static void SetStartPage(UserControl page)
+        public static void SetStartPage(Page page)
         {
             PageStack.Push(page);
             ShowPage(page);
@@ -44,9 +44,9 @@ namespace Wizard
         private static bool EnableNextButton()
         {
             if (PageStack.Count == 0 || Container == null) return false;
-            var vm = Container.Page.DataContext as Page;
-            if (vm == null) return false;
-            var isNoPage = vm.Next is Views.Pages.NoPage;
+            var current = PageStack.Peek();
+            if (current == null) return false;
+            var isNoPage = current.Next is NoPage;
             return !isNoPage;
         }
 
@@ -57,34 +57,33 @@ namespace Wizard
             HidePage(page);                     // Hide current page.
         }
 
-        private static void HidePage(UserControl page)
+        private static void HidePage(Page page)
         {
-            var vm = page.DataContext as Page;  // Get view model of current page.
-            vm.Closing();                       // Page is closing when no longer displayed.
+            page.Closing();
             var previous = PageStack.Peek();    // Previous page.
-            ShowPage(PageStack.Peek());         // Show previous page.
+            ShowPage(previous);         // Show previous page.
         }
 
         private static void NextButton_Callback()
         {
-            var vm = Container.Page.DataContext as Page;    // Current displayed page.
+            var current = PageStack.Peek();
 
             // Check if "next page" happens to be a non existing page.
             // Then prevent from displaying the next page.
-            if (vm.Next is Views.Pages.NoPage) return;
+            if (current is NoPage) return;
 
-            vm.Closing();           // Close current displayed page.
-            var next = vm.Next;     // Get next page.
+            current.Closing();           // Close current displayed page.
+
+            var next = current.Next;
             PageStack.Push(next);   // Store next page.
             ShowPage(next);         // Show next page.
         }
 
-        private static void ShowPage(UserControl page)
+        private static void ShowPage(Page page)
         {
-            var vm = page.DataContext as Page;  // Get view model of next page.
-            vm.Opening();                       // Page is opeinging before it's displayed.
-            UpdateHeaderTitle(vm.Title);
-            Container.Page = page;              // Show next page.
+            page.Opening();
+            UpdateHeaderTitle(page.Title);
+            Container.Page = page.Content;              // Show next page.
         }
 
         private static void UpdateHeaderTitle(Title title)
@@ -104,9 +103,8 @@ namespace Wizard
         {
             foreach (var page in PageStack)
             {
-                var vm = page.DataContext as Page;
-                vm.Closing();
-                vm.Dispose();
+                page.Closing();
+                page.Dispose();
             }
         }
     }
