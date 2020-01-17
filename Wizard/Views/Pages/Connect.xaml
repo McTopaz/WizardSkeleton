@@ -8,19 +8,21 @@
              xmlns:misc="clr-namespace:Wizard.Misc"
              xmlns:num="clr-namespace:ControlLib;assembly=NumericUpDown"
              xmlns:System="clr-namespace:System;assembly=mscorlib" 
-             xmlns:rjcp="clr-namespace:RJCP.IO.Ports;assembly=RJCP.SerialPortStream"
-             xmlns:converters="clr-namespace:Wizard.Misc"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.DataContext>
         <vm:vmConnect />
     </UserControl.DataContext>
+
+    <UserControl.Resources>
+        <misc:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+    </UserControl.Resources>
     
     <DockPanel LastChildFill="True">
 
         <!-- Network -->
-        <RadioButton DockPanel.Dock="Left" Margin="20,20,0,0">
+        <RadioButton IsChecked="{Binding UseNetwork}" DockPanel.Dock="Left" Margin="20,20,0,0">
 
             <RadioButton.Resources>
                 <ObjectDataProvider x:Key="AllProtocols" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
@@ -28,20 +30,10 @@
                         <x:Type TypeName="misc:Protocols"/>
                     </ObjectDataProvider.MethodParameters>
                 </ObjectDataProvider>
-                <ObjectDataProvider x:Key="AllParyties" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
-                    <ObjectDataProvider.MethodParameters>
-                        <x:Type TypeName="misc:Paritys"/>
-                    </ObjectDataProvider.MethodParameters>
-                </ObjectDataProvider>
-                <ObjectDataProvider x:Key="AllStopBits" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
-                    <ObjectDataProvider.MethodParameters>
-                        <x:Type TypeName="misc:StopBits"/>
-                    </ObjectDataProvider.MethodParameters>
-                </ObjectDataProvider>
             </RadioButton.Resources>
             
             <RadioButton.Content>
-                <StackPanel Orientation="Vertical" DockPanel.Dock="Bottom">
+                <StackPanel Orientation="Vertical" DockPanel.Dock="Bottom" IsEnabled="{Binding UseNetwork}">
 
                     <Label Content="Connect over network" />
 
@@ -76,9 +68,23 @@
         </RadioButton>
 
         <!-- Serial -->
-        <RadioButton DockPanel.Dock="Left" Margin="20,20,0,0">
+        <RadioButton IsChecked="{Binding UseNetwork, Converter={StaticResource InvertedBoolConverter}}" DockPanel.Dock="Left" Margin="20,20,0,0">
+
+            <RadioButton.Resources>
+                <ObjectDataProvider x:Key="AllParyties" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
+                    <ObjectDataProvider.MethodParameters>
+                        <x:Type TypeName="misc:Paritys"/>
+                    </ObjectDataProvider.MethodParameters>
+                </ObjectDataProvider>
+                <ObjectDataProvider x:Key="AllStopBits" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
+                    <ObjectDataProvider.MethodParameters>
+                        <x:Type TypeName="misc:StopBits"/>
+                    </ObjectDataProvider.MethodParameters>
+                </ObjectDataProvider>
+            </RadioButton.Resources>
+            
             <RadioButton.Content>
-                <StackPanel Orientation="Vertical" DockPanel.Dock="Bottom">
+                <StackPanel IsEnabled="{Binding UseNetwork, Converter={StaticResource InvertedBoolConverter}}" Orientation="Vertical" DockPanel.Dock="Bottom">
 
                     <Label Content="Connect over network" />
 
@@ -109,12 +115,12 @@
 
                         <!-- Parity -->
                         <Label Content="Parity" Grid.Row="3" Grid.Column="0" />
-                        <ComboBox ItemsSource="{Binding AllParitys}" SelectedItem="{Binding Parity}" Grid.Row="3" Grid.Column="1" />
+                        <ComboBox ItemsSource="{Binding Source={StaticResource AllParyties}}" SelectedItem="{Binding Parity}" Grid.Row="3" Grid.Column="1" />
 
                         <!-- Stop bits -->
+                        <Label Content="Stop bits" Grid.Row="4" Grid.Column="0" />
+                        <ComboBox ItemsSource="{Binding Source={StaticResource AllStopBits}}" SelectedItem="{Binding StopBits}" Grid.Row="4" Grid.Column="1" />
                     </Grid>
-
-
 
                 </StackPanel>
             </RadioButton.Content>

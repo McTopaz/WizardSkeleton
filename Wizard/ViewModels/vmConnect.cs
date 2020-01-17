@@ -13,6 +13,8 @@ namespace Wizard.ViewModels
     [AddINotifyPropertyChangedInterface]
     class vmConnect : Page
     {
+        public bool UseNetwork { get; set; } = true;
+
         // Network
         public IPAddress IpAddress { get; set; } = IPAddress.Loopback;
         public double Port { get; set; } = 10001;
@@ -26,7 +28,6 @@ namespace Wizard.ViewModels
         public StopBits StopBits { get; set; } = StopBits.One;
 
         public IEnumerable<string> Comports { get; private set; } = RJCP.IO.Ports.SerialPortStream.GetPortNames();
-        public IEnumerable<int> AllDataBits { get; private set; } = new int[] { 1, 2, 3, 4, 5, 6, 7, 8 };
 
         public vmConnect()
         {
