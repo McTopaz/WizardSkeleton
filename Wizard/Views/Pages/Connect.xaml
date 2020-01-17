@@ -53,18 +53,16 @@
 
                         <!-- IP-address -->
                         <Label Content="IP-address" Grid.Row="0" Grid.Column="0" />
-                        <TextBox Text="{Binding IpAddress}" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="1" />
+                        <TextBox Text="{Binding IpAddress}" IsEnabled="{Binding EnableFields.IpAddress}" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="1" />
                         
                         <!-- Port -->
                         <Label Content="Port" Grid.Row="2" Grid.Column="0" />
-                        <num:NumericUpDown Value="{Binding Port}" MinValue="0" MaxValue="65535" Grid.Row="2" Grid.Column="1" />
+                        <num:NumericUpDown Value="{Binding Port}" IsEnabled="{Binding EnableFields.Port}" MinValue="0" MaxValue="65535" Grid.Row="2" Grid.Column="1" />
                         
                         <!-- Protocol -->
                         <Label Content="Protocol" Grid.Row="4" Grid.Column="0" />
-                        <ComboBox ItemsSource="{Binding Source={StaticResource AllProtocols}}" SelectedItem="{Binding Protocol}" Grid.Row="4" Grid.Column="1" />
+                        <ComboBox ItemsSource="{Binding Source={StaticResource AllProtocols}}" SelectedItem="{Binding Protocol}" IsEnabled="{Binding EnableFields.Protocol}" VerticalContentAlignment="Center" Grid.Row="4" Grid.Column="1" />
                     </Grid>
-                    
-                    
 
                 </StackPanel>
             </RadioButton.Content>
@@ -110,23 +108,23 @@
 
                         <!-- Comport -->
                         <Label Content="Comport" Grid.Row="0" Grid.Column="0" />
-                        <ComboBox ItemsSource="{Binding Comports}" Text="{Binding Comport}" Grid.Row="0" Grid.Column="1" />
+                        <ComboBox ItemsSource="{Binding Comports}" Text="{Binding Comport}" IsEnabled="{Binding EnableFields.Comport}" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="1" />
 
                         <!-- Baudrate -->
                         <Label Content="Baudrate" Grid.Row="2" Grid.Column="0" />
-                        <num:NumericUpDown Value="{Binding Baudrate}" MinValue="0" MaxValue="1000000" Grid.Row="2" Grid.Column="1" />
+                        <ComboBox ItemsSource="{Binding Baudrates}" SelectedItem="{Binding Baudrate}" IsEnabled="{Binding EnableFields.Baudrate}" Grid.Row="2" Grid.Column="1" />
 
                         <!-- Data bits -->
                         <Label Content="Data bits" Grid.Row="4" Grid.Column="0" />
-                        <num:NumericUpDown Value="{Binding Databits}" MinValue="0" MaxValue="8" Grid.Row="4" Grid.Column="1" />
+                        <num:NumericUpDown Value="{Binding Databits}" IsEnabled="{Binding EnableFields.DataBits}" MinValue="0" MaxValue="8" Grid.Row="4" Grid.Column="1" />
 
                         <!-- Parity -->
                         <Label Content="Parity" Grid.Row="6" Grid.Column="0" />
-                        <ComboBox ItemsSource="{Binding Source={StaticResource AllParyties}}" SelectedItem="{Binding Parity}" Grid.Row="6" Grid.Column="1" />
+                        <ComboBox ItemsSource="{Binding Source={StaticResource AllParyties}}" SelectedItem="{Binding Parity}" IsEnabled="{Binding EnableFields.Parity}" VerticalContentAlignment="Center" Grid.Row="6" Grid.Column="1" />
 
                         <!-- Stop bits -->
                         <Label Content="Stop bits" Grid.Row="8" Grid.Column="0" />
-                        <ComboBox ItemsSource="{Binding Source={StaticResource AllStopBits}}" SelectedItem="{Binding StopBits}" Grid.Row="8" Grid.Column="1" />
+                        <ComboBox ItemsSource="{Binding Source={StaticResource AllStopBits}}" SelectedItem="{Binding StopBits}" IsEnabled="{Binding EnableFields.StopBits}" VerticalContentAlignment="Center" Grid.Row="8" Grid.Column="1" />
                     </Grid>
 
                 </StackPanel>

@@ -39,6 +39,21 @@ namespace Wizard.ViewModels
         {
             Next = new Connect();
             Container.Next = new Page(Next);
+            var vm = Container.Next.ViewModel as vmConnect;
+            UpdateConnectViewModel(vm);
+        }
+
+        private void UpdateConnectViewModel(vmConnect vm)
+        {
+            var parameters = new EnableConnectFields()
+            {
+                DataBits = false,
+                Parity = false,
+                StopBits = false
+            };
+
+            vm.EnableFields = parameters;
+            vm.UseNetwork = true;
         }
     }
 }

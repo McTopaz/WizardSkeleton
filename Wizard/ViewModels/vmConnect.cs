@@ -15,7 +15,7 @@ namespace Wizard.ViewModels
     class vmConnect : vmPageBase
     {
         public bool UseNetwork { get; set; } = true;
-        public EnableConnectFields EnableParameters { get; set; } = new EnableConnectFields(true);
+        public EnableConnectFields EnableFields { get; set; } = new EnableConnectFields();
 
         // Network
         public IPAddress IpAddress { get; set; } = IPAddress.Loopback;
@@ -30,6 +30,7 @@ namespace Wizard.ViewModels
         public StopBits StopBits { get; set; } = StopBits.One;
 
         public IEnumerable<string> Comports { get; private set; } = RJCP.IO.Ports.SerialPortStream.GetPortNames();
+        public IEnumerable<int> Baudrates { get; private set; } = new int[] { 110, 300, 600, 1200, 2400, 4800, 9600, 14400, 19200, 38400, 57600, 115200, 128000, 256000 };
 
         public vmConnect()
         {
@@ -42,28 +43,15 @@ namespace Wizard.ViewModels
     class EnableConnectFields
     {
         // Network
-        public bool IpAddress { get; set; }
-        public bool Port { get; set; }
-        public bool Protocol { get; set; }
+        public bool IpAddress { get; set; } = true;
+        public bool Port { get; set; } = true;
+        public bool Protocol { get; set; } = true;
 
         // Serial
-        public bool Comport { get; set; }
-        public bool Baudrate { get; set; }
-        public bool DataBits { get; set; }
-        public bool Parity { get; set; }
-        public bool StopBits { get; set; }
-
-        public EnableConnectFields(bool useNetwork = true)
-        {
-            IpAddress = useNetwork;
-            Port = useNetwork;
-            Protocol = useNetwork;
-
-            Comport = !useNetwork;
-            Baudrate = !useNetwork;
-            DataBits = !useNetwork;
-            Parity = !useNetwork;
-            StopBits = !useNetwork;
-        }
+        public bool Comport { get; set; } = true;
+        public bool Baudrate { get; set; } = true;
+        public bool DataBits { get; set; } = true;
+        public bool Parity { get; set; } = true;
+        public bool StopBits { get; set; } = true;
     }
 }
