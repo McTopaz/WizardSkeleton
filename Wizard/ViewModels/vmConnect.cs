@@ -14,6 +14,7 @@ namespace Wizard.ViewModels
     class vmConnect : Page
     {
         public bool UseNetwork { get; set; } = true;
+        public EnableConnectFields EnableParameters { get; set; } = new EnableConnectFields(true);
 
         // Network
         public IPAddress IpAddress { get; set; } = IPAddress.Loopback;
@@ -33,6 +34,35 @@ namespace Wizard.ViewModels
         {
             Title.Text = "Select communication method";
             Next = new Views.Pages.Run();
+        }
+    }
+
+    [AddINotifyPropertyChangedInterface]
+    class EnableConnectFields
+    {
+        // Network
+        public bool IpAddress { get; set; }
+        public bool Port { get; set; }
+        public bool Protocol { get; set; }
+
+        // Serial
+        public bool Comport { get; set; }
+        public bool Baudrate { get; set; }
+        public bool DataBits { get; set; }
+        public bool Parity { get; set; }
+        public bool StopBits { get; set; }
+
+        public EnableConnectFields(bool useNetwork = true)
+        {
+            IpAddress = useNetwork;
+            Port = useNetwork;
+            Protocol = useNetwork;
+
+            Comport = !useNetwork;
+            Baudrate = !useNetwork;
+            DataBits = !useNetwork;
+            Parity = !useNetwork;
+            StopBits = !useNetwork;
         }
     }
 }
