@@ -1,10 +1,10 @@
-﻿<UserControl x:Class="Wizard.Views.Pages.Connect"
+﻿<UserControl x:Class="Wizard.Views.Pages.Communications"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Wizard.Views.Pages"
-             xmlns:vm="clr-namespace:Wizard.ViewModels"
+                          xmlns:vm="clr-namespace:Wizard.ViewModels"
              xmlns:misc="clr-namespace:Wizard.Misc"
              xmlns:num="clr-namespace:ControlLib;assembly=NumericUpDown"
              xmlns:System="clr-namespace:System;assembly=mscorlib" 
@@ -12,13 +12,13 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.DataContext>
-        <vm:vmConnect />
+        <vm:vmCommunications />
     </UserControl.DataContext>
 
     <UserControl.Resources>
         <misc:InvertedBoolConverter x:Key="InvertedBoolConverter" />
     </UserControl.Resources>
-    
+
     <DockPanel LastChildFill="True">
 
         <!-- Network -->
@@ -32,7 +32,7 @@
                 </ObjectDataProvider>
                 <misc:TextToIpAddress x:Key="TextToIP" />
             </RadioButton.Resources>
-            
+
             <RadioButton.Content>
                 <StackPanel Orientation="Vertical" DockPanel.Dock="Bottom" IsEnabled="{Binding UseNetwork}">
 
@@ -42,9 +42,11 @@
 
                         <Grid.RowDefinitions>
                             <RowDefinition />
-                            <RowDefinition Height="6" />    <!-- Row spacing -->
+                            <RowDefinition Height="6" />
+                            <!-- Row spacing -->
                             <RowDefinition />
-                            <RowDefinition Height="6" />    <!-- Row spacing -->
+                            <RowDefinition Height="6" />
+                            <!-- Row spacing -->
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
@@ -55,11 +57,11 @@
                         <!-- IP-address -->
                         <Label Content="IP-address" Grid.Row="0" Grid.Column="0" />
                         <TextBox Text="{Binding IpAddress, Converter={StaticResource TextToIP}}" IsEnabled="{Binding EnableFields.IpAddress}" VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="1" />
-                        
+
                         <!-- Port -->
                         <Label Content="Port" Grid.Row="2" Grid.Column="0" />
                         <num:NumericUpDown Value="{Binding Port}" IsEnabled="{Binding EnableFields.Port}" MinValue="0" MaxValue="65535" Grid.Row="2" Grid.Column="1" />
-                        
+
                         <!-- Protocol -->
                         <Label Content="Protocol" Grid.Row="4" Grid.Column="0" />
                         <ComboBox ItemsSource="{Binding Source={StaticResource AllProtocols}}" SelectedItem="{Binding Protocol}" IsEnabled="{Binding EnableFields.Protocol}" VerticalContentAlignment="Center" Grid.Row="4" Grid.Column="1" />
@@ -84,7 +86,7 @@
                     </ObjectDataProvider.MethodParameters>
                 </ObjectDataProvider>
             </RadioButton.Resources>
-            
+
             <RadioButton.Content>
                 <StackPanel IsEnabled="{Binding UseNetwork, Converter={StaticResource InvertedBoolConverter}}" Orientation="Vertical" DockPanel.Dock="Bottom">
 
@@ -93,13 +95,17 @@
                     <Grid Margin="0,20,0,0">
                         <Grid.RowDefinitions>
                             <RowDefinition />
-                            <RowDefinition Height="6" />    <!-- Row spacing -->
+                            <RowDefinition Height="6" />
+                            <!-- Row spacing -->
                             <RowDefinition />
-                            <RowDefinition Height="6" />    <!-- Row spacing -->
+                            <RowDefinition Height="6" />
+                            <!-- Row spacing -->
                             <RowDefinition />
-                            <RowDefinition Height="6" />    <!-- Row spacing -->
+                            <RowDefinition Height="6" />
+                            <!-- Row spacing -->
                             <RowDefinition />
-                            <RowDefinition Height="6" />    <!-- Row spacing -->
+                            <RowDefinition Height="6" />
+                            <!-- Row spacing -->
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
@@ -135,5 +141,4 @@
         <Separator Visibility="Hidden" />
 
     </DockPanel>
-    
 </UserControl>

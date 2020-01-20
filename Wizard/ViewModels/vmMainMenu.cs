@@ -37,13 +37,13 @@ namespace Wizard.ViewModels
 
         private void Run_Callback()
         {
-            Next = new Connect();
+            Next = new Communications();
             Container.Next = new Page(Next);
-            var vm = Container.Next.ViewModel as vmConnect;
+            var vm = Container.Next.ViewModel as vmCommunications;
             UpdateConnectViewModel(vm);
         }
 
-        private void UpdateConnectViewModel(vmConnect vm)
+        private void UpdateConnectViewModel(vmCommunications vm)
         {
             var parameters = new EnableConnectFields()
             {

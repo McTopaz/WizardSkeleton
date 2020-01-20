@@ -14,11 +14,11 @@ using System.Windows.Shapes;
 namespace Wizard.Views.Pages
 {
     /// <summary>
-    /// Interaction logic for Connect.xaml
+    /// Interaction logic for Communications.xaml
     /// </summary>
-    public partial class Connect : UserControl
+    public partial class Communications : UserControl
     {
-        public Connect()
+        public Communications()
         {
             InitializeComponent();
         }

@@ -13,10 +13,10 @@
     <Compile Update="Views\Header.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Pages\Config.xaml.cs">
+    <Compile Update="Views\Pages\Communications.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Pages\Connect.xaml.cs">
+    <Compile Update="Views\Pages\Config.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\Pages\MainMenu.xaml.cs">
@@ -42,10 +42,10 @@
     <Page Update="Views\Header.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Pages\Config.xaml">
+    <Page Update="Views\Pages\Communications.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Pages\Connect.xaml">
+    <Page Update="Views\Pages\Config.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Pages\MainMenu.xaml">

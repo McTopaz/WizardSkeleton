@@ -12,7 +12,7 @@ using PropertyChanged;
 namespace Wizard.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
-    class vmConnect : vmPageBase
+    class vmCommunications : vmPageBase
     {
         public bool UseNetwork { get; set; } = true;
         public EnableConnectFields EnableFields { get; set; } = new EnableConnectFields();
@@ -32,7 +32,7 @@ namespace Wizard.ViewModels
         public IEnumerable<string> Comports { get; private set; } = RJCP.IO.Ports.SerialPortStream.GetPortNames();
         public IEnumerable<int> Baudrates { get; private set; } = new int[] { 110, 300, 600, 1200, 2400, 4800, 9600, 14400, 19200, 38400, 57600, 115200, 128000, 256000 };
 
-        public vmConnect()
+        public vmCommunications()
         {
             Title.Text = "Select communication method";
             Next = new Run();
