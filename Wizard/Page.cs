@@ -29,14 +29,22 @@ namespace Wizard
             Next = ViewModel.Next == null ? new NoPage() : new Page(ViewModel.Next);
         }
 
-        public virtual void Opening()
+        /// <summary>
+        /// The page is being opened.
+        /// </summary>
+        /// <param name="direction">The direction of where the application is going.</param>
+        public void Opening(Direction direction)
         {
-            ViewModel.Opening();
+            ViewModel.Opening(direction);
         }
 
-        public virtual void Closing()
+        /// <summary>
+        /// The page is being closed.
+        /// </summary>
+        /// <param name="direction">The direction of where the application is going.</param>
+        public void Closing(Direction direction)
         {
-            ViewModel.Closing();
+            ViewModel.Closing(direction);
         }
 
         public void Dispose()

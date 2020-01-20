@@ -14,11 +14,19 @@ namespace Wizard
         public UserControl Next { get; protected set; }
         public IPage Container { get; set; }
 
-        public virtual void Opening()
+        /// <summary>
+        /// The page is being opened.
+        /// </summary>
+        /// <param name="direction">The direction of where the application is going.</param>
+        public virtual void Opening(Direction direction)
         {
         }
 
-        public virtual void Closing()
+        /// <summary>
+        /// The page is being closed.
+        /// </summary>
+        /// <param name="direction">The direction of where the application is going.</param>
+        public virtual void Closing(Direction direction)
         {
         }
 

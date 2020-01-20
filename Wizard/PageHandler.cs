@@ -23,7 +23,7 @@ namespace Wizard
         public static void SetStartPage(Page page)
         {
             PageStack.Push(page);
-            ShowPage(page);
+            ShowPage(page, Direction.None);
         }
 
         public static void SetNavigationCommands(RelayCommand<Direction> back, RelayCommand<Direction> next, RelayCommand exit)
@@ -54,17 +54,17 @@ namespace Wizard
         {
             if (PageStack.Count == 0) return;
             var page = PageStack.Pop();         // Remove current page.
-            HidePage(page);                     // Hide current page.
+            HidePage(page, parameter);          // Hide current page.
         }
 
-        private static void HidePage(Page page)
+        private static void HidePage(Page page, Direction direction)
         {
-            page.Closing();
+            page.Closing(direction);
             var previous = PageStack.Peek();    // Previous page.
-            ShowPage(previous);         // Show previous page.
+            ShowPage(previous, direction);      // Show previous page.
         }
 
-        private static void NextButton_Callback(Direction parameter)
+        private static void NextButton_Callback(Direction direction)
         {
             var current = PageStack.Peek();
 
@@ -72,16 +72,16 @@ namespace Wizard
             // Then prevent from displaying the next page.
             if (current is NoPage) return;
 
-            current.Closing();           // Close current displayed page.
+            current.Closing(direction); // Close current displayed page.
 
             var next = current.Next;
-            PageStack.Push(next);   // Store next page.
-            ShowPage(next);         // Show next page.
+            PageStack.Push(next);       // Store next page.
+            ShowPage(next, direction);  // Show next page.
         }
 
-        private static void ShowPage(Page page)
+        private static void ShowPage(Page page, Direction direction)
         {
-            page.Opening();
+            page.Opening(direction);
             UpdateHeaderTitle(page.Title);
             Container.Page = page.Content;              // Show next page.
         }
@@ -103,7 +103,7 @@ namespace Wizard
         {
             foreach (var page in PageStack)
             {
-                page.Closing();
+                page.Closing(Direction.None);
                 page.Dispose();
             }
         }

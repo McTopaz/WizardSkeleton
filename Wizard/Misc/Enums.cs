@@ -7,7 +7,8 @@ namespace Wizard.Misc
     enum Direction
     {
         Forward,
-        Backward
+        Backward,
+        None
     }
     enum Protocols
     {
