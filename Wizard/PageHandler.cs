@@ -26,7 +26,7 @@ namespace Wizard
             ShowPage(page);
         }
 
-        public static void SetNavigationCommands(RelayCommand back, RelayCommand next, RelayCommand exit)
+        public static void SetNavigationCommands(RelayCommand<Direction> back, RelayCommand<Direction> next, RelayCommand exit)
         {
             back.Callback += BackButton_Callback;
             next.Callback += NextButton_Callback;
@@ -50,7 +50,7 @@ namespace Wizard
             return !isNoPage;
         }
 
-        private static void BackButton_Callback(object parameter = null)
+        private static void BackButton_Callback(Direction parameter)
         {
             if (PageStack.Count == 0) return;
             var page = PageStack.Pop();         // Remove current page.
@@ -64,7 +64,7 @@ namespace Wizard
             ShowPage(previous);         // Show previous page.
         }
 
-        private static void NextButton_Callback(object parameter = null)
+        private static void NextButton_Callback(Direction parameter)
         {
             var current = PageStack.Peek();
 

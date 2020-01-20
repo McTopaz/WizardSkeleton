@@ -16,8 +16,8 @@ namespace Wizard.ViewModels
         public RelayCommand Hyperlink { get; private set; } = new RelayCommand();
         public string Version { get; private set; }
 
-        public RelayCommand Back { get; private set; } = new RelayCommand();
-        public RelayCommand Next { get; private set; } = new RelayCommand();
+        public RelayCommand<Direction> Back { get; private set; } = new RelayCommand<Direction>();
+        public RelayCommand<Direction> Next { get; private set; } = new RelayCommand<Direction>();
         public RelayCommand Exit { get; private set; } = new RelayCommand();
 
         public vmFooter()
