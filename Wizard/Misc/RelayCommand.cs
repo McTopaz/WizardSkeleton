@@ -9,7 +9,7 @@ namespace Wizard.Misc
 {
     class RelayCommand : ICommand
     {
-        public delegate void CallbackHandler();
+        public delegate void CallbackHandler(object parameter = null);
         public event CallbackHandler Callback;
         public Predicate<object> Enable { get; set; }
 
@@ -18,7 +18,7 @@ namespace Wizard.Misc
             Callback += RelayCommand_Callback;
         }
 
-        private void RelayCommand_Callback()
+        private void RelayCommand_Callback(object parameter = null)
         {
         }
 
@@ -35,7 +35,7 @@ namespace Wizard.Misc
 
         public void Execute(object parameter = null)
         {
-            Callback();
+            Callback(parameter);
         }
     }
 }

@@ -50,7 +50,7 @@ namespace Wizard
             return !isNoPage;
         }
 
-        private static void BackButton_Callback()
+        private static void BackButton_Callback(object parameter = null)
         {
             if (PageStack.Count == 0) return;
             var page = PageStack.Pop();         // Remove current page.
@@ -64,7 +64,7 @@ namespace Wizard
             ShowPage(previous);         // Show previous page.
         }
 
-        private static void NextButton_Callback()
+        private static void NextButton_Callback(object parameter = null)
         {
             var current = PageStack.Peek();
 
@@ -93,7 +93,7 @@ namespace Wizard
             Title.Color = title.Color;
         }
 
-        private static void ExitButton_Callback()
+        private static void ExitButton_Callback(object parameter = null)
         {
             DisposePages();
             Environment.Exit(0);

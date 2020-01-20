@@ -43,7 +43,7 @@ namespace Wizard.ViewModels
             return file.CompanyName;
         }
 
-        private void Hyperlink_Callback()
+        private void Hyperlink_Callback(object parameter)
         {
             var psi = new System.Diagnostics.ProcessStartInfo
             {

@@ -23,19 +23,19 @@ namespace Wizard.ViewModels
             Title.Text = "Main menu";
         }
 
-        private void Search_Callback()
+        private void Search_Callback(object parameter = null)
         {
             Next = new Search();
             Container.Next = new Page(Next);
         }
 
-        private void Config_Callback()
+        private void Config_Callback(object parameter = null)
         {
             Next = new Config();
             Container.Next = new Page(Next);
         }
 
-        private void Run_Callback()
+        private void Run_Callback(object parameter = null)
         {
             Next = new Communications();
             Container.Next = new Page(Next);

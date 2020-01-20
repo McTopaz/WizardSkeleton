@@ -21,7 +21,7 @@ namespace Wizard.ViewModels
             Next = new MainMenu();
         }
 
-        private void Language_Callback()
+        private void Language_Callback(object parameter = null)
         {
         }
     }
