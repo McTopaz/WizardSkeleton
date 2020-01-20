@@ -31,8 +31,7 @@ namespace Wizard.Misc
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var str = value.ToString();
-            IPAddress ip;
-            if (IPAddress.TryParse(str, out ip))
+            if (IPAddress.TryParse(str, out IPAddress ip))
             {
                 return ip;
             }
