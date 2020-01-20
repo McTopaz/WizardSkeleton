@@ -41,8 +41,8 @@ namespace Wizard.Misc
 
     class RelayCommand<T> : ICommand
     {
-        public delegate void CH(T parameter);
-        public event CH Callback;
+        public delegate void CallbackHandler(T parameter);
+        public event CallbackHandler Callback;
         public Predicate<object> Enable { get; set; }
 
         public RelayCommand()
