@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Wizard.Views"
              xmlns:vm="clr-namespace:Wizard.ViewModels"
+             xmlns:misc="clr-namespace:Wizard.Misc"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Background="Aquamarine"
@@ -48,7 +49,7 @@
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" Margin="0,0,20,0">
 
             <!-- Back -->
-            <Button Width="80" Height="25" Command="{Binding Back}">
+            <Button Width="80" Height="25" Command="{Binding Back}" CommandParameter="{x:Static misc:Direction.Backward}">
                 <Button.Content>
                     <Image Source="/Wizard;component/Images/Back.png" Height="16" />
                 </Button.Content>
@@ -58,7 +59,7 @@
             <Separator Visibility="Hidden" Width="5" />
 
             <!-- Next -->
-            <Button Width="80" Height="25" Command="{Binding Next}">
+            <Button Width="80" Height="25" Command="{Binding Next}" CommandParameter="{x:Static misc:Direction.Forward}">
                 <Button.Content>
                     <Image Source="/Wizard;component/Images/Next.png" Height="16" />
                 </Button.Content>

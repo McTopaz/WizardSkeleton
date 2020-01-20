@@ -4,6 +4,11 @@ using System.Text;
 
 namespace Wizard.Misc
 {
+    enum Direction
+    {
+        Forward,
+        Backward
+    }
     enum Protocols
     {
         Udp,
