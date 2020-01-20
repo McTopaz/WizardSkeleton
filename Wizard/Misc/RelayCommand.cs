@@ -38,4 +38,36 @@ namespace Wizard.Misc
             Callback(parameter);
         }
     }
+
+    class RelayCommand<T> : ICommand
+    {
+        public delegate void CH(T parameter);
+        public event CH Callback;
+        public Predicate<object> Enable { get; set; }
+
+        public RelayCommand()
+        {
+            Callback += RelayCommand_Callback;
+        }
+
+        private void RelayCommand_Callback(T parameter)
+        {
+        }
+
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
+
+        public bool CanExecute(object parameter)
+        {
+            return Enable == null ? true : Enable(parameter);
+        }
+
+        public void Execute(object parameter)
+        {
+            Callback((T)parameter);
+        }
+    }
 }
